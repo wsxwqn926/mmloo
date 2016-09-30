@@ -261,7 +261,7 @@ body{font-family: "微软雅黑"}
 	color: #fff;
 }
 .categorys .cg-content {
-	display: none;
+
 	position: relative;
 	width: 210px;
 	height: 466px;
@@ -314,7 +314,7 @@ body{font-family: "微软雅黑"}
     top: 150px;
 }
 .categorys .cg-con-drop .drop-T-2{
-    top: 220px;
+    top: 160px;
 }
 .drop-item .drop-item-h{
 	width: 100%;
@@ -410,17 +410,28 @@ body{font-family: "微软雅黑"}
 
 }
 .banner-img ul{
-
     overflow: hidden;
 }
-
 .banner-img li{
     width: 100%;
     position: absolute;
+    top:0;
+    left: 0;
     text-align: center;
     height: 420px;
+    display: none;
 }
-
+.banner-img li:nth-child(1){
+    display: block;
+}
+.banner-img li a{
+    width: 812px;
+    height: 420px;
+    position: absolute;
+    left: 50%;
+    top:0;
+    margin-left: -406px;
+}
 .banner-img li img{
     height: 420px;
     max-width: 100%;

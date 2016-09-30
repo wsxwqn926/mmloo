@@ -14,23 +14,6 @@
             //添加事件
             this.navWrapperHover();
             this.navHover();
-            this.navnavItem();
-
-        },
-
-        navnavItem :function () {
-            var that = this;
-            this.cgTitle.mouseenter(function () {
-                console.log(that.navWrapper.eq($(this).index()))
-                that.navWrapper.css({
-                    display : "block"
-                })
-            })
-            this.navWrapper.mouseleave(function () {
-                that.navWrapper.css({
-                    display : "none"
-                })
-            })
         },
         navWrapperHover: function(){
 

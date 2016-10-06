@@ -4,8 +4,7 @@
             //初始化属性
             this.navWrapper = $('.cg-content');
             this.navItem = $('.nav-item');
-            this.cgTitle =$('.cg-title');
-            this.categorys =$('.categorys')
+
             this.dropWrapper = $('.cg-con-drop');
             this.dropItem = $('.drop-item');
 
@@ -53,4 +52,100 @@
     };
     tab.init();
 
+})();
+$(function () {
+    var banner = {
+        init: function () {
+            this.list = $(".banner-img ul li");
+            this.arrow = $(".arrow");
+            this.arrowLeft = $(".arrow-left");
+            this.arrowRight = $(".arrow-right");
+            this.adTitle = $('.ad-title a')
+            this.now = 0;
+            this.num = 0;
+            this.tiner = null;
+            this.autoplay();
+            this.mouseover();
+            this.leftClick();
+            this.rightClick();
+            this.circlemove();
+        },
+        /*定时器*/
+        autoplay: function () {
+            var that = this;
+            this.timer = setInterval(function () {
+                that.num++;
+                that.num%= that.list.length;
+                that.fade();
+            },2000)
+        },
+        /*淡出淡入的交替*/
+        fade: function () {
+           // console.log(this.now , this.num)
+            this.list.eq(this.now).fadeOut(1000);
+            this.list.eq(this.num).fadeIn(1000);
+
+            this.now =  this.num;
+            this.adTitle.eq(this.num).addClass("cur").siblings().removeClass("cur");
+
+        },
+        /*鼠标移入移出*/
+        mouseover:function () {
+            var that = this;
+            $(".banner-img").hover(function () {
+                clearInterval(that.timer);
+                that.arrow.css({
+                    display: "block"
+                })
+            },function () {
+                that.autoplay();
+                that.arrow.css({
+                    display: "none"
+                })
+            })
+        },
+        /*点击切换上一张图片*/
+        leftClick: function () {
+            var that = this;
+            this.arrowLeft.click(function () {
+                that.num--;
+                that.num%= that.list.length;
+                if(that.num<=0){
+                    that.num=5;
+                }
+                console.log(that.num)
+                that.fade();
+            })
+        },
+        /*点击切换下一张图片*/
+        rightClick: function () {
+            var that = this;
+            this.arrowRight.click(function () {
+                that.num++;
+                that.num%= that.list.length;
+                console.log(that.num)
+                that.fade();
+            })
+        },
+        /*鼠标移入切换当前图片*/
+        circlemove:function () {
+            var that = this;
+            this.adTitle.mouseenter(function () {
+                that.num = $(this).index();
+                that.fade();
+            })
+        }
+    };
+    banner.init();
+});
+(function () {
+
+    $(" .b-f-top ul li:even").css({
+        background:"url('img/banner-bottom/zhijiang.png') no-repeat 0 center"
+
+    })
+    $(" .b-f-top ul li:odd").css({
+        background:"url('img/banner-bottom/tejia.png') no-repeat 0 center"
+
+    })
 })();

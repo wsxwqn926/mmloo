@@ -349,11 +349,9 @@ $(function(){
 $(function(){
     $('.show-top ul li').mouseenter(function(){
         $('.commodity_right').eq($(this).index()).css({
-            display:'block'
+            display:"block"
+        }).siblings().css({
+            display:"none"
         })
-        $('.commodity_right').eq($(this).index()).siblings().css({
-            display:'none'
-        })
-        console.log($('.commodity_right').eq($(this).index()))
     });
 })

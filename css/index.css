@@ -12,7 +12,8 @@ h1,h2,h3,h4,h5,h6{font-size:12px;font-weight:100;}
 
 .clearfix:after{content:".";display:block;clear:both;height:0;overflow:hidden;visibility:hidden;}
 
-body{font-family: "微软雅黑"}
+body{font-family: "微软雅黑";background-color: #f8f8f8;color: #666666;
+    }
 
 .con{
 	width: 1200px;
@@ -94,6 +95,10 @@ body{font-family: "微软雅黑"}
 }
 
 .top-R dd{
+	width: 90px;
+	line-height: 30px;
+   background-color: #fff;
+	position: absolute;
 	display: none;
 }
 .top-R-site{
@@ -104,8 +109,7 @@ body{font-family: "微软雅黑"}
 }
 /* top-banner */
 #top-banner{
-	-background-color: #fafafa;
-	background: #f00;
+	
 	width: 100%;
 	height: 70px;
 	margin: 0 auto;
@@ -222,7 +226,12 @@ body{font-family: "微软雅黑"}
 	margin: 0 auto;
 }
 
-.container .categorys,
+.container .categorys {
+	float: left;
+	height: 44px;
+	line-height: 44px;
+	font-size: 16px;
+}
 .container .nav {
 	float: left;
 	height: 44px;
@@ -230,11 +239,14 @@ body{font-family: "微软雅黑"}
 	font-size: 16px;
 }
 .container .categorys .cg-title {
+	font-size: 16px;
+	font-weight: 900;
 	position: relative;
 	width: 190px;
 	color: #fff;
 	padding: 0 10px;
 	color: #fff;
+
 	background-color: #FE3C32;
 }
 
@@ -258,6 +270,7 @@ body{font-family: "微软雅黑"}
 	border-style: solid dashed dashed dashed;
 }
 .container .categorys a {
+	font-size: 16px;
 	color: #fff;
 }
 .categorys .cg-content {
@@ -387,6 +400,8 @@ body{font-family: "微软雅黑"}
 	float: left;
 }
 .container .nav li a {
+	font-size: 16px;
+	font-weight: 900;
 	display: block;
 	color: #333;
 	padding: 0 20px;
@@ -482,8 +497,10 @@ body{font-family: "微软雅黑"}
 	background: rgba(0,0,0,0.5);
 }
 .ab-imgs{
+	height: 60px;
 	background: 0;
 }
+
 .right-sidebar{
 	height: 480px;
 	position: absolute;
@@ -707,6 +724,7 @@ body{font-family: "微软雅黑"}
 .commodity{
 	margin-top: 15px;
 	background-color: #fff;
+	padding-bottom: 10px;
 }
 .commodity .show-top{
 	width: 100%;
@@ -1030,7 +1048,8 @@ body{font-family: "微软雅黑"}
 .goods_list{
 	width: 975px;
 	height: 222px;
-	float: left;position: relative;
+	float: left;
+	position: relative;
 	z-index: 1;
 }
 .goods_list li{
@@ -1095,4 +1114,180 @@ body{font-family: "微软雅黑"}
 	color: #999;
 	margin-left: 6px;
 	vertical-align: middle;
+}
+#optimal{
+	margin-top: 20px;
+	height: 515px;
+	width: 100%;
+	background-color: #fff;
+	padding-bottom: 16px;
+}
+.optimal{
+	height: 515px;
+}
+#optimal .optimal h2{
+	font-size: 25px;
+	color: #333;
+	font-weight: 100;
+	border-bottom: 1px dashed #e7e7e7;
+	margin: 20px 0;
+	float: left;
+	width: 100%;
+}
+.optimal li{
+	float: left;
+	width: 390px;
+	margin-bottom: 20px
+
+}
+.optimal .optimal_list{
+	margin: 0 15px 20px;
+}
+/* guide */
+#guide{
+	width: 100%;
+	height: 232px;
+	border-top: 1px solid #F5F5F5 ;
+	border-bottom: 1px solid #f2f2f2;
+	background-color: #fafafa;
+}
+.guide .guide_left{
+	float: left;
+}
+.guide .guide_left ul{
+	width: 738px;
+	height: 191px;
+	margin-bottom: 20px;
+
+}
+.guide .guide_left ul li{
+	float: left;
+	width: 180px;
+	font-size: 12px;
+	display: inline-block;
+}
+.guide .guide_left ul li dl{
+	width: 90%;
+	display: block;
+	margin: 0 auto;
+}
+.guide .guide_left ul li dt{
+	font-size: 16px;
+	padding: 10px 5px;
+	border-bottom: 1px solid #e6e6e6;
+	margin: 5px 0;
+}
+.guide .guide_left ul li dd{
+	
+	margin-right: 5px;
+	background: url(../img/Optimal/top-ab.jpg) no-repeat  0 center;
+	padding: 2px 5px 2px 10px;
+}
+.guide .guide_right{
+	float: right;
+	width: 410px;
+	height: 230px;
+	background-color: #fff;
+}
+.guide .guide_right .guide_R_l{
+	width: 250px;
+	height: 100%;
+	padding: 0 10px;
+	border-style: solid;
+	border-color: #e6e6e6;
+	border-width: 0 1px;
+	float: left;
+	font-size: 12px;
+}
+.guide .guide_right .guide_R_l h2{
+	font-size: 16px;
+
+	font-weight: 900;
+	color: #666;
+	padding: 10px 5px ;
+	margin: 5px 0;
+	border-bottom: 1px solid #e6e6e6;
+}
+.guide .guide_right .guide_R_l span{
+	background: url(../img/Optimal/call.gif) no-repeat  0 center;
+	font-size: 22px;
+	line-height: 25px;
+	color: #ff8a00;
+	padding: 2px 5px ;
+	font-weight: 900;
+	padding-left: 25px;
+}
+.guide .guide_right .guide_R_l p{
+	padding: 2px 5px;
+}
+.guide .guide_right .guide_R_l a{
+	padding: 2px 5px;
+
+	display: block;
+	height: 21px;
+}
+.guide .guide_right .guide_R_l a img{
+	margin-right: 10px;
+	float: left;
+}
+.guide .guide_right .guide_R_l a em{
+		line-height: 21px;
+		float: left;
+		font-style: normal;
+}
+.guide .guide_right .guide_R_R{
+	float: left;
+	width: 127px;
+	height: 230px;
+	padding: 0 5px;
+	background: #fff;
+	text-align: center;
+}
+.guide .guide_right .guide_R_R h2{
+	font-size: 16px;
+
+	font-weight: 400;
+	color: #666;
+	padding: 10px 5px ;
+	margin: 5px 0;
+	border-bottom: 1px solid #e6e6e6;
+}
+.guide .guide_right .guide_R_R img{
+	width: 80px;
+	height: 80px;
+	margin: 10px 0 5px;
+}
+.guide .guide_right .guide_R_R p{
+	padding-bottom: 10px;
+}
+.guide .guide_right .guide_R_R p,#yqlink,.guide .guide_right .guide_R_R img{
+	border-bottom: 1px solid #e6e6e6;
+}
+/* yqlink */
+#yqlink{
+	background: #fff;
+	min-height: 30px;
+	line-height: 30px;
+}
+.yqlink span{
+	margin: 5px;
+}
+.yqlink span a:hover{
+	color: red;
+}
+/* bottom_cx */
+#bottom_cx{
+	height: 112px;
+	padding-top: 4px;
+	
+}
+.bottom_cx{
+	text-align: center;
+	line-height: 20px; 
+}
+.bottom_cx p{
+	font-size: 12px
+}
+.sidebar .bottom_cx img{
+	margin-top: 20px;
 }

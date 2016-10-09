@@ -411,3 +411,185 @@ function animate(elem,json,time,fn){
 			elem.style[type] = start + 'px';
 		}*/
 }
+/*小型左右轮播图*/
+function goods(show){
+    this.abg = $(show)
+    this.goodsBox =  this.abg.find('.goods_show_box');
+    this.goodsUl = this.goodsBox.find('ul');
+    this.goodsLi = this.goodsUl.find('li');
+    this.goodsPer = this.goodsBox.find('.goods_show_per')
+    this.goodsNext = this.goodsBox.find(".goods_show_next")
+    /*克隆li*/
+    var lastLi = this.goodsLi.last().clone(true);
+    var firstLi = this.goodsLi.first().clone(true);
+    //把最后一个元素添加到第一个位置
+    this.goodsUl.prepend(lastLi);
+    //把第一个元素添加到最后一个位置
+    this.goodsUl.append(firstLi);
+    //获取li个数
+    this.goodsLength =this.abg.find('.goods_show_box ul li').length;
+    //获取li的宽度
+    this.goodsWidth = lastLi.width();
+    /*改变this.goodsUl宽度*/
+    this.goodsUl.width(this.goodsWidth*this.goodsLength);
+    //console.log(this.goodsUl.find('li'))
+    this.goodsUl.css({
+        left:-this.goodsWidth
+    })
+    this.index = 1;
+    this.timer = null;
+}
+goods.prototype = {
+    //保留prototype中原有的属性
+    constructor: goods.prototype.constructor,
+    __proto__: goods.prototype.__proto__,
+     init:function(){
+       
+        this.autoPlay();
+        this.move();
+        this.perClick();
+        this.nextClick();
+    },
+    autoPlay: function(){
+        var that =this;
+        this.timer = setInterval(function(){
+            that.index++;
+            that.switchLi();
+        }, 2000)
+    },
+    switchLi:function(){
+        var that = this;
+        this.goodsUl.stop(true).animate({
+            left:-that.index*that.goodsWidth
+        }, 500,function(){
+            if(that.index>=that.goodsLength-1){
+                that.index=1;
+            };
+            if(that.index<=0){
+                that.index=that.goodsLength-2
+            };
+            //console.log(that.index)
+            that.goodsUl.css({
+                left:-that.index*that.goodsWidth
+            })
+        })
+    },
+    move:function(){
+        var that = this;
+        this.goodsBox.hover(function() {
+            clearInterval(that.timer)
+        }, function() {
+            that.autoPlay();
+        });
+    },
+    perClick:function(){
+        var that = this;
+        this.goodsPer.click(function(){
+            that.index--;
+            that.switchLi();
+        })
+    },
+     nextClick:function(){
+        var that = this;
+        this.goodsNext.click(function(){
+            that.index++;
+            that.switchLi();
+             //console.log(that.index)
+        })
+    }
+}
+/*小型上下轮播*/
+function seamless(show){
+    this.abg = $(show)
+    //console.log(this.abg)
+     this.seamless =this.abg.find('.seamless')
+     this.wrapperUl = this.seamless.find('.wrapper-ul');
+     this.list = this.wrapperUl.find('li');
+     this.recommendRight = this.seamless.find('.recommend_next')
+     this.recommendLeft = this.seamless.find('.recommend_pre')
+     this.liLength =this.abg.find('.wrapper-ul li').length;
+     this.heightLi = this.list.eq(0).height();
+     this.wrapperUl.css({
+         top:-this.heightLi
+     });
+     this.index = 1;
+     this.timer = null;
+     //console.log(this.list)
+}
+seamless.prototype = {
+    //保留prototype中原有的属性
+    constructor: seamless.prototype.constructor,
+    __proto__: seamless.prototype.__proto__,
+    init:function(){
+        this.autoPlay();
+         this.move();
+         this.leftClick();
+         this.rightClick();
+    },
+     autoPlay:function(){
+            var that = this;
+            this.timer = setInterval(function(){
+                //clearInterval(that.timer)
+                that.index++;
+                that.switchLi();
+            }, 2000)
+        },
+        switchLi:function(){
+            var that = this;
+            //console.log(that.index)
+             //console.log(-that.index*that.heightLi)
+            this.wrapperUl.stop().animate({
+                top:-that.index*that.heightLi
+            },500,function(){
+                if(that.index>=that.liLength-3){
+
+                    that.index=1;
+
+                };
+                if(that.index<=0){
+                    that.index=that.liLength-4
+                }
+                that.wrapperUl.css({
+                    top:-that.index*that.heightLi
+                })
+            });
+        },
+
+         move:function(){
+            var that = this;
+            this.seamless.hover(function(){
+                clearInterval(that.timer);
+            },function(){
+                that.autoPlay();
+            })
+        },
+        leftClick:function(){
+            
+            var that = this;
+            this.recommendLeft.click(function(){
+                that.index--;
+                that.switchLi();
+            })
+            
+        },
+         rightClick:function(){
+            var that = this;
+            this.recommendRight.click(function(){
+                that.index++;
+                that.switchLi();
+               
+            })
+            
+        }
+}
+function tabControl(show){
+	this.show = $(show)
+	var that=this;
+	 this.show.find('.show-top ul li').mouseenter(function(){
+        that.show.find('.commodity_right').eq($(this).index()).css({
+            display:"block"
+        }).siblings().css({
+            display:"none"
+        })
+    });
+}

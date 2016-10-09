@@ -152,167 +152,7 @@ $(function () {
 
     })
 })();
-/*小型上下轮播*/
-$(function(){
-    var seamless = {
-        init:function(){
-            this.seamless = $('.seamless');
-            this.wrapperUl = this.seamless.find('.wrapper-ul');
-            this.list = this.wrapperUl.find('li');
-            this.recommendRight = this.seamless.find('.recommend_next')
-            this.recommendLeft = this.seamless.find('.recommend_pre')
-            this.liLength = $('.wrapper-ul li').length;
-            this.heightLi = this.list.eq(0).height();
-            this.wrapperUl.css({
-                top:-this.heightLi
-            });
-            this.index = 1;
-            this.timer = null;
-            this.autoPlay();
-            this.move();
-            this.leftClick();
-            this.rightClick();
-            //console.log(this.heightLi)
-        },
-        autoPlay:function(){
-            var that = this;
-            this.timer = setInterval(function(){
-                //clearInterval(that.timer)
-                that.index++;
-                that.switchLi();
-            }, 2000)
-        },
-        switchLi:function(){
-            var that = this;
-            //console.log(that.index)
-             //console.log(-that.index*that.heightLi)
-            this.wrapperUl.stop().animate({
-                top:-that.index*that.heightLi
-            },500,function(){
-                if(that.index>=that.liLength-3){
 
-                    that.index=1;
-
-                };
-                if(that.index<=0){
-                    that.index=that.liLength-4
-                }
-                that.wrapperUl.css({
-                    top:-that.index*that.heightLi
-                })
-            });
-        },
-
-         move:function(){
-            var that = this;
-            this.seamless.hover(function(){
-                clearInterval(that.timer);
-            },function(){
-                that.autoPlay();
-            })
-        },
-        leftClick:function(){
-            var that = this;
-            this.recommendLeft.click(function(){
-                that.index--;
-                that.switchLi();
-            })
-            
-        },
-         rightClick:function(){
-            var that = this;
-            this.recommendRight.click(function(){
-                that.index++;
-                that.switchLi();
-               
-            })
-            
-        }
-    };
-    seamless.init();
-})
-/*小型左右轮播图*/
-$(function(){
-    var goods = {
-        init:function(){
-            this.goodsBox = $('.goods_show_box');
-            this.goodsUl = this.goodsBox.find('ul');
-            this.goodsLi = this.goodsUl.find('li');
-            this.goodsPer = this.goodsBox.find('.goods_show_per')
-            this.goodsNext = this.goodsBox.find(".goods_show_next")
-            /*克隆li*/
-            var lastLi = this.goodsLi.last().clone(true);
-            var firstLi = this.goodsLi.first().clone(true);
-            //把最后一个元素添加到第一个位置
-            this.goodsUl.prepend(lastLi);
-            //把第一个元素添加到最后一个位置
-            this.goodsUl.append(firstLi);
-            //获取li个数
-            this.goodsLength = $('.goods_show_box ul li').length;
-            //获取li的宽度
-            this.goodsWidth = lastLi.width();
-            /*改变this.goodsUl宽度*/
-            this.goodsUl.width(this.goodsWidth*this.goodsLength);
-            //console.log(this.goodsWidth)
-            this.goodsUl.css({
-                left:-this.goodsWidth
-            })
-            this.index = 1;
-            this.timer = null;
-            this.autoPlay();
-            this.move();
-            this.perClick();
-            this.nextClick();
-        },
-        autoPlay: function(){
-            var that =this;
-            this.timer = setInterval(function(){
-                that.index++;
-                that.switchLi();
-            }, 2000)
-        },
-        switchLi:function(){
-            var that = this;
-            this.goodsUl.stop(true).animate({
-                left:-that.index*that.goodsWidth
-            }, 500,function(){
-                if(that.index>=that.goodsLength-1){
-                    that.index=1;
-                };
-                if(that.index<=0){
-                    that.index=that.goodsLength-2
-                };
-                that.goodsUl.css({
-                    left:-that.index*that.goodsWidth
-                })
-            })
-        },
-        move:function(){
-            var that = this;
-            this.goodsBox.hover(function() {
-                clearInterval(that.timer)
-            }, function() {
-                that.autoPlay();
-            });
-        },
-        perClick:function(){
-            var that = this;
-            this.goodsPer.click(function(){
-                that.index--;
-                that.switchLi();
-            })
-        },
-         nextClick:function(){
-            var that = this;
-            this.goodsNext.click(function(){
-                that.index++;
-                that.switchLi();
-                 console.log(that.index)
-            })
-        }
-    };
-    goods.init();
-});
 /*goods_group4*/
 $(function(){
     var group4 = {
@@ -333,10 +173,9 @@ $(function(){
             });
         }
     };
+    /*商品动画*/
     group4.init();
-});
-$(function(){
-    $('.goods_list li dl .goods-thumb').hover(function() {
+     $('.goods_list li dl .goods-thumb').hover(function() {
         $(this).stop(true).animate({
             top:-4
         }, 500)
@@ -345,13 +184,47 @@ $(function(){
             top:0
         }, 500)
     });
+  
+});
+/*侧边栏*/
+$(function(){
+    $('.sidebar .sider_weap li').hover(function(){
+        $(this).find('.dis').show();
+    },function(){
+        $(this).find('.dis').hide();
+    })
 })
 $(function(){
-    $('.show-top ul li').mouseenter(function(){
-        $('.commodity_right').eq($(this).index()).css({
-            display:"block"
-        }).siblings().css({
-            display:"none"
+    $('.top .top-R dl').hover(function(){
+        $(this).find('dd').show();
+        $(this).css({
+            background:"#fff"
         })
+    },function(){
+        $(this).find('dd').hide();
+        $(this).css({
+            background:"rgba(1,1,1,0)"
+        })
+    })
+    $(".backtop").click(function(){
+        $("body").animate({
+            scrollTop:0
+        }, 500)
+    })
+})
+
+$(function(){
+    //遍历所有的banner盒子  （自己复习each方法）
+    $('.show').each(function(){
+        //为每个banner盒子创建一个对象（自己的空间），并调用初始化方法
+        new seamless( $(this) ).init();
+    });
+     $('.show').each(function(){
+        //为每个banner盒子创建cl个对象（自己的空间），并调用初始化方法
+        new goods( $(this) ).init();
+    });
+      $('.show').each(function(){
+        //为每个banner盒子创建cl个对象（自己的空间），并调用初始化方法
+        new tabControl( $(this) )
     });
 })

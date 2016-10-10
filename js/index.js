@@ -206,6 +206,7 @@ $(function(){
             background:"rgba(1,1,1,0)"
         })
     })
+    /*回到顶部*/
     $(".backtop").click(function(){
         $("body").animate({
             scrollTop:0

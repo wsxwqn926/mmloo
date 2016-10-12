@@ -32,7 +32,7 @@ $(function () {
 		//console.log("^" + val + "=(.*)$")
 
 	})
-
+	// 随机验证码
 	createCode($('.code'))
 	$('#aClick').click(function(){
 		var codesb = $('.code')
@@ -46,31 +46,41 @@ $(function () {
 		var p2 = "验证码不能为空"
 		var reg = /^[0-9]{6}$/;
 		judge(val,reg,that,p,p2);
+		
 	})
 	/*立即注册*/
+	
 	$("#submit").click(function(){
 		var fal =false
+		var index = 0;
+		if($('#clause').prop("checked")){
+			$('#clause').attr('data-date', "true");
+		}else{
+			$('#clause').attr('data-date', "false");
+		}
+		
 		$('.zc_login_centent .tip').each(function(){
-			//console.log($(this).is('input[data-date="true"]'))
+			console.log($(this).is('input[data-date="true"]'))
 			//console.log($(this).is('input[dataDate="true"]'))
 			if($(this).is('input[data-date="true"]')){
 				//console.log(3121)
+				index++;
 				fal = true;
 				return
 			}
 		})
-		if(fal){
+		if(index==5){
 			var userinfo = {
 				username: $('#username').val(),
 				password: $('#password').val()
 			};
 			console.log()
 			$.cookie('userinfo',JSON.stringify( userinfo ),{expires: 10,path: '/'})
-
+			alert('注册成功')
 			//跳转到登录页面
-			window.location.href = 'index.html';
+			window.location.href = 'enter.html';
 		}else{
-			alert("请完善信息！")
+			createCode($('.code'))
 		}
 	})
 	function judge(val,reg,that,p,p2,p3){

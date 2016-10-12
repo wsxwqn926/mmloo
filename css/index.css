@@ -100,6 +100,7 @@ body{font-family: "微软雅黑";background-color: #f8f8f8;color: #666666;
    background-color: #fff;
 	position: absolute;
 	display: none;
+	z-index: 10;
 }
 .top-R-site{
 	background: url(../img/top/nav.png) no-repeat 5px 5px;
@@ -215,7 +216,7 @@ body{font-family: "微软雅黑";background-color: #f8f8f8;color: #666666;
 	clear: both;
 }
 /* 二级菜单 */
-.wrapper {
+.wrapper_u {
 	height: 44px;
 
 	border-bottom: 2px solid #B1191A;
@@ -270,15 +271,17 @@ body{font-family: "微软雅黑";background-color: #f8f8f8;color: #666666;
 	border-style: solid dashed dashed dashed;
 }
 .container .categorys a {
-	font-size: 16px;
+	
 	color: #fff;
+}
+.clearfix_container{
+	font-size: 16px;
 }
 .categorys .cg-content {
 
 	position: relative;
 	width: 210px;
 	height: 420px;
-	margin-top: 2px;
     z-index: 7;
 }
 .categorys .cg-content .nav-item {
@@ -306,10 +309,10 @@ body{font-family: "微软雅黑";background-color: #f8f8f8;color: #666666;
 .categorys .cg-con-drop {
 	display: none;
 	z-index: 7;
-
+	
 	position: absolute;
 	left: 210px;
-	top: 0px;
+	top: 2px;
 	width: 760px;
 	min-height: 390px;
 	border-left: 0;

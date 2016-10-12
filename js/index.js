@@ -3,11 +3,11 @@
     var tab = {
         init: function(){
             //初始化属性
-            this.navWrapper = $('.cg-content');
-            this.navItem = $('.nav-item');
+            this.navWrapper = $('.wrapper_u .cg-content');
+            this.navItem = $('.wrapper_u .nav-item');
 
-            this.dropWrapper = $('.cg-con-drop');
-            this.dropItem = $('.drop-item');
+            this.dropWrapper = $('.wrapper_u .cg-con-drop');
+            this.dropItem = $('.wrapper_u .drop-item');
 
             this.pre = 0;
 

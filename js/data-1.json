@@ -1,7 +1,7 @@
 {
 	"10001": {
 		"goods-id": 10001,
-		"goods-name": "时尚起义 韩国直邮 秋季时尚蕾丝罩衫 +吊带衫 天蓝色",
+		"goods-name": "华为华为揽阅M2 803L/801W 八核安卓平板电脑",
 		"goods-price": 149.9,
 		"goods-style": "天蓝色",
 		"goods-size": "one",
@@ -10,11 +10,38 @@
 	},
 	"10002": {
 		"goods-id": 10002,
-		"goods-name": "时尚起义 韩国直邮 秋季时尚蕾丝罩衫 +吊带衫 白色",
+		"goods-name": "华为华为揽阅M2 803L/803W 八核安卓平板电脑",
 		"goods-price": 132,
 		"goods-style": "白色",
 		"goods-size": "one",
 		"goods-stock": 999,
-		"goods-img": "img/xq/xq-0-1.jpg"
+		"goods-img": "img/xq/xq-0-2.jpg"
+	},
+	"10003": {
+		"goods-id": 10003,
+		"goods-name": "华为华为揽阅M2 1333L/801W 八核安卓平板电脑",
+		"goods-price": 100,
+		"goods-style": "白色",
+		"goods-size": "one",
+		"goods-stock": 999,
+		"goods-img": "img/xq/xq-0-3.jpg"
+	},
+	"10004": {
+		"goods-id": 10004,
+		"goods-name": "华为华为揽阅M2 3234L/801W 八核安卓平板电脑",
+		"goods-price": 544,
+		"goods-style": "白色",
+		"goods-size": "one",
+		"goods-stock": 999,
+		"goods-img": "img/xq/xq-0-4.jpg"
+	},
+	"10005": {
+		"goods-id": 10005,
+		"goods-name": "华为华为揽阅M2 435L/801W 八核安卓平板电脑",
+		"goods-price": 354,
+		"goods-style": "白色",
+		"goods-size": "one",
+		"goods-stock": 999,
+		"goods-img": "img/xq/xq-0-5.jpg"
 	}
 }

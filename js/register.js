@@ -1,5 +1,6 @@
 $(function () {
 	/*用户名*/
+
 	$('#username').blur(function(){
 		var val = $(this).val();
 		var that = $(this)
@@ -21,6 +22,11 @@ $(function () {
 
 		//console.log("^" + val + "=(.*)$")
 	})
+	$('.tip').focusin(function(){
+		$(this).parent().find('em').html($(this).attr('title'))
+		
+		$(this).attr('title','')
+	})
 	/*验证码*/
 	$('#captcha').blur(function(){
 		var val = $(this).val();
@@ -30,9 +36,11 @@ $(function () {
 		var p2 = "验证码不能为空"
 		validate(val,that,code,p,p2)
 		//console.log("^" + val + "=(.*)$")
-
-	})
+	// $('.tip').
+	// })
 	// 随机验证码
+	
+	});
 	createCode($('.code'))
 	$('#aClick').click(function(){
 		var codesb = $('.code')
@@ -76,9 +84,11 @@ $(function () {
 			};
 			console.log()
 			$.cookie('userinfo',JSON.stringify( userinfo ),{expires: 10,path: '/'})
-			alert('注册成功')
-			//跳转到登录页面
-			window.location.href = 'enter.html';
+			if(confirm('注册成功，是否登录')){
+               //跳转到登录页面
+				window.location.href = 'enter.html';
+            }
+			
 		}else{
 			createCode($('.code'))
 		}
@@ -110,13 +120,14 @@ $(function () {
 			that.parent().find('i').show().addClass('error');
 			that.parent().find('em').html(p2);
 			that.attr('data-date', "false");
+			createCode($('.code'))
 			return
 		}else if(!reg.test(val)){
 			that.addClass('bode');
 			that.parent().find('i').show().addClass('error');
 			that.parent().find('em').html(p)
 			that.attr('data-date', "false");
-			// if()  
+			createCode($('.code'))
 	 	}else{
 	 		
 			that.parent().find('i').show().removeClass('error');
@@ -126,7 +137,7 @@ $(function () {
 			
 		}
 	}
-});
+
 // 随机验证码
  function createCode(codesb){
  	var  codes = "";
@@ -150,13 +161,13 @@ function validate(val,that,code,p,p2){
     else if(val != code ) { //若输入的验证码与产生的验证码不一致时  
        that.addClass('bode');
         that.parent().find('i').show().addClass('error');
-		that.parent().find('em').html(p2)
+		that.parent().find('em').html(p)
 		that.attr('data-date', "false");
-    }         
-    else { //输入正确时  
+    }else { //输入正确时  
         that.parent().find('i').show().removeClass('error');
 		that.removeClass('bode');
 		that.parent().find('em').html('')
 		that.attr('data-date', "true");
     }             
-}  
+}
+})	 

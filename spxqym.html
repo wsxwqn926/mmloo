@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/sidebar.css">
     <link rel="stylesheet" href="css/spxqym.css">
+    <title>商品详情</title>
 </head>
 <body>
  <!-- top -->
@@ -934,16 +935,17 @@
                      <div class="xq_goods_img">
                         <img src="img/xq/xq-0-1.jpg"  alt="">
                         <div class="xq_goods_shut">X</div>
+                        
                     </div>
+                    <div class="xq_gs_left cut">&lt;</div>
+                    <div class="xq_gs_right cut">&gt;</div>
                 </div>
                 <ul class="clearfix">
-                    <li class="selected" data-gid="10001"><a href="javascript:"><img src="img/xq/xq-0-1.jpg" alt=""></a></li>
-                    <li class="selected2"  data-gid="10002"><a href="javascript:"><img src="img/xq/xq-0-2.jpg" alt=""></a></li>
-                    <li><a href="javascript:"><img src="img/xq/xq-0-3.jpg" alt=""></a></li>
-                    <li><a href="javascript:"><img src="img/xq/xq-0-4.jpg" alt=""></a></li>
-                    <li><a href="javascript:"><img src="img/xq/xq-0-5.jpg" alt=""></a></li>
-                    <div class="xq_goods_left cut">&lt;</div>
-                    <div class="xq_goods_right cut">&gt;</div>
+                    <li class="selected " ><a href="javascript:" data-gid="10001"><img src="img/xq/xq-0-1.jpg" alt=""></a></li>
+                    <li><a href="javascript:" data-gid="10002"><img src="img/xq/xq-0-2.jpg" alt=""></a></li>
+                    <li><a href="javascript:" data-gid="10003"><img src="img/xq/xq-0-3.jpg" alt=""></a></li>
+                    <li><a href="javascript:" data-gid="10004"><img src="img/xq/xq-0-4.jpg" alt=""></a></li>
+                    <li><a href="javascript:" data-gid="10005"><img src="img/xq/xq-0-5.jpg" alt=""></a></li>
                 </ul>
                 
             </div>
@@ -971,6 +973,9 @@
             </div>
             </div>
             <div class="xq_goods_right">
+                <div id="gfdp">
+                    <img src="img/xq/xq-1-1.png" height="305" width="196" alt="">
+                </div>
                 <div class="xq_goods_name">
                     <h2>
                         华为华为揽阅M2 803L/801W 八核安卓平板电脑 8英寸 平板手机  64G 4G版 金色(可通话)
@@ -1003,11 +1008,43 @@
                         </dd>
                     </dl>
                     <dl class="xq-freight">
-                        <dt>至<a href="jaavscript:void(0)" id="ncrecive">全国
-                            <div class="ncrecive_">
-                                
+                        <dt class = "xq-freight-dt-1">至<a href="jaavscript:void(0)" id="ncrecive">全国</a>：
+                            <div  class="xq-qu-show">
+                                <a href="javascript:void(0)" nctype="2">天津</a>
+                                <a href="javascript:void(0)" nctype="3">河北</a>
+                                <a href="javascript:void(0)" nctype="4">山西</a>
+                                <a href="javascript:void(0)" nctype="5">内蒙古</a>
+                                <a href="javascript:void(0)" nctype="6">辽宁</a>
+                                <a href="javascript:void(0)" nctype="7">吉林</a>
+                                <a href="javascript:void(0)" nctype="8">黑龙江</a>
+                                <a href="javascript:void(0)" nctype="9">上海</a>
+                                <a href="javascript:void(0)" nctype="10">江苏</a>
+                                <a href="javascript:void(0)" nctype="11">浙江</a>
+                                <a href="javascript:void(0)" nctype="12">安徽</a>
+                                <a href="javascript:void(0)" nctype="13">福建</a>
+                                <a href="javascript:void(0)" nctype="14">江西</a>
+                                <a href="javascript:void(0)" nctype="15">山东</a>
+                                <a href="javascript:void(0)" nctype="16">河南</a>
+                                <a href="javascript:void(0)" nctype="17">湖北</a>
+                                <a href="javascript:void(0)" nctype="18">湖南</a>
+                                <a href="javascript:void(0)" nctype="19">广东</a>
+                                <a href="javascript:void(0)" nctype="20">广西</a>
+                                <a href="javascript:void(0)" nctype="21">海南</a>
+                                <a href="javascript:void(0)" nctype="22">重庆</a>
+                                <a href="javascript:void(0)" nctype="23">四川</a>
+                                <a href="javascript:void(0)" nctype="24">贵州</a>
+                                <a href="javascript:void(0)" nctype="25">云南</a>
+                                <a href="javascript:void(0)" nctype="26">西藏</a>
+                                <a href="javascript:void(0)" nctype="27">陕西</a>
+                                <a href="javascript:void(0)" nctype="28">甘肃</a>
+                                <a href="javascript:void(0)" nctype="29">青海</a>
+                                <a href="javascript:void(0)" nctype="30">宁夏</a>
+                                <a href="javascript:void(0)" nctype="31">新疆</a>
+                                <a href="javascript:void(0)" nctype="32">台湾</a>
+                                <a href="javascript:void(0)" nctype="33">香港</a>
+                                <a href="javascript:void(0)" nctype="34">澳门</a>
+                                <a href="javascript:void(0)" nctype="35">海外</a>
                             </div>
-                        </a>：
                         </dt>
                         <dd class="transport_price">
                            <span>
@@ -1021,6 +1058,7 @@
                                发货
                            </span>
                         </dd>
+                        <div id="loading_price" style="position: absolute;top: 0px;left: 90px;color: red;font-size:12px;line-height: 28px;">loading.....</div>
                     </dl>
                 </div>
                 <div class="xq_key">
@@ -1124,6 +1162,7 @@
                     </ul>
                 </div>
                 <div class="guide_right">
+                    
                     <div class="guide_R_l">
                         <h2>客服中心</h2>
                         <span>4006-780-781</span>
@@ -1294,9 +1333,12 @@
                             <a class="zhankai dis" href="#">认证包邮<div></div></a>
                         </li>
                         <li>
+                        <a href="cart.html">
                             <span>
                                 <img src="img/right/right_cart.png" alt="">
                             </span>
+                        </a>
+                            
                             
                         </li>
                          <li>

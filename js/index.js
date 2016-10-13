@@ -152,7 +152,23 @@ $(function () {
 
     })
 })();
-
+// 用户名
+$(function(){
+    var userinfo = $.cookie('userinfo') || '{}';
+    userinfo = JSON.parse( userinfo);
+    console.log(userinfo.username,userinfo.password)
+    if(userinfo.username!=undefined){
+        $('.top-L').html("<div style='font-size:12px;float:left;'>您好"+userinfo.username+"，欢迎来到 米米乐商城<a href='enter.html' class='asdfg' style='float:right;line-height: 16px;'>[退出]</a></div>" )
+    }
+    //$('.top-L')
+})
+/*退出*/
+/*$(function(){
+    $('.top-L').on('click','.asdfg',function(){
+        $('.top-L').html( '<span><a href="enter.html">登录</a></span>'+'<span><a href="register.html">注册</a></span>' )
+        $(this).parents('.cart-goods-item').parent().remove();
+    })
+})*/
 /*goods_group4*/
 $(function(){
     var group4 = {

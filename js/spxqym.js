@@ -62,12 +62,16 @@
     var goodsLeft={
         init:function(){
             this.xqCenten = $('#xq_centen');
+            this.xqabg = this.xqCenten.find('.xq_goods_abg')
             this.goodsLeft = $('.xq_goods_t_left');
             this.xQgoodsImg = this.goodsLeft.find('.xq_goods_img')
             this.goodsImg = this.goodsLeft.find('.xq_goods_img img');
             this.goodsUl = this.goodsLeft.find('ul')
             this.goodsLi = this.xqCenten.find('.xq_goods_t_left li');
-            this.xqGoodsShut = this.xqCenten.find(".xq_goods_shut")
+            this.goodsAs =  this.xqCenten.find('.clearfix a')
+            this.xqGoodsShut = this.xqCenten.find(".xq_goods_shut");
+            this.freight = this.xqCenten.find('.xq-freight-dt-1');
+            this.xqQuShow =this.xqCenten.find('.xq-qu-show')
             /*商品数量*/
             this.quantity = this.xqCenten.find("#quantity")
             /*增加*/
@@ -78,6 +82,11 @@
             this.ncsKjzp = this.goodsLeft.find('.ncs_kjzp')
             /*购物车*/
             this.addcart= this.xqCenten.find(".addcart")
+            /*切换按钮*/
+            this.cut = this.xqCenten.find('.cut');
+            this.cutLeft = this.xqCenten.find(".xq_gs_left");
+            this.cutRight = this.xqCenten.find(".xq_gs_right");
+            this.index = 0;
             this.move();
             this.clickLi();
             this.clickShut();
@@ -86,26 +95,87 @@
             this.numReduce();
             this.input();
             this.addCart();
+            this.movesChover();
+            this.clickLeft();
+            this.clickRight();
+            this.freiGht();
+            this.clickAabg();
         },
+        /*鼠标移入li给a添加一个类*/
         move:function(){
 
             var that = this
-            this.goodsLi.mouseenter(function(){
-                $(this).find('a').css({
-                    padding: 0,
-                    borderWidth: 2,
-                    borderStyle:'solid',
-                    borderColor: '#D93600'
-                });
-                $(this).siblings().find('a').css({
-                    padding: 1,
-                    border: '1px solid #EEE'
-                });
-                that.goodsImg.attr({
-                    src:$(this).find('img').attr('src')
-                })
+            var index = 0
+            this.goodsLi.click(function(){
+                that.index = $(this).index();
+               that.fade($(this))
             });
         },
+          /*图片的交替*/
+        fade: function (thats) {
+            var that = this;
+           // console.log(this.now , this.num)
+            
+            if(this.index<0){
+                this.index=4
+            }
+            if(this.index>4){
+                this.index=0
+            }
+            this.goodsImg.attr({
+                src:that.goodsLi.eq(that.index).find('img').attr('src')
+            });
+            //console.log(this.index)
+            this.goodsLi.eq(that.index).find('a').addClass('optFor')
+            this.goodsLi.eq(that.index).siblings().find('a').removeClass('optFor')
+        },
+        /*切换按钮*/
+        movesChover:function(){
+            var that = this;
+            this.xqabg.hover(function(){
+                that.cut.show();
+            },function(){
+                that.cut.hide();
+            })
+        },
+        /*点击切换按钮切left换图片*/
+        clickLeft:function(){
+            var that = this;
+            this.cutLeft.on("click",function(){
+                that.index--;
+                that.fade();
+            });
+        },
+        /*点击切换按钮切right换图片*/
+        clickRight:function(){
+            var that = this;
+            this.cutRight.on("click",function(){
+                that.index++;
+                that.fade();
+            });
+        },
+        /*鼠标移入显示地区*/
+        freiGht:function(){
+            var that = this;
+            this.freight.hover(function(){
+                that.xqQuShow.addClass('xq-tope')
+            },function(){
+                that.xqQuShow.removeClass('xq-tope')
+            })
+        },
+        clickAabg:function(){
+            this.xqQuShow.find('a').click(function(){
+                $('#ncrecive').html($(this).html())
+                $('.transport_price').hide();
+                $('#loading_price').show();
+                //$('#loading_price').delay(6000).hide();
+                setTimeout(function(){
+                    $('#loading_price').hide();
+                     $('.transport_price').show();
+                }, 500)
+            })
+        },
+        /*点击li*/
         clickLi:function(){
             var that = this;
             this.goodsLi.click(function(){
@@ -225,9 +295,9 @@
                 var cart = $.cookie('mls-cart') || '{}';
                 cart = JSON.parse(cart);
 
-                var goodsId = $('.selected').data('gid');
+                var goodsId = $('.optFor').data('gid');
                 var amount = that.quantity.val();
-
+                console.log($('.optFor').data('gid'))
                 //判断cart中是否已经存在当前商品
                 if(!cart[goodsId]){
                     cart[goodsId] = {
@@ -240,7 +310,7 @@
 
                 //写到cookie中
                 $.cookie('mls-cart',JSON.stringify( cart ),{expires: 365,path:'/'});
-                console.log(JSON.parse( $.cookie('mls-cart') ) );
+                //console.log(JSON.parse( $.cookie('mls-cart') ) );
                 if(confirm('添加成功，是否查看购物车')){
                    window.location.href = 'cart.html';
                 }

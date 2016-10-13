@@ -22,16 +22,17 @@ $(function(){
 			$.getJSON('js/data-1.json',function(result){
 				//console.log(result);
 				that.getCookie();
+				console.log(that.cart);
 				//var goods = {};
 				for(var key in that.cart){
+				console.log(key);
 					//key 某个商品id
-
 					(function(key){
 						//生成一条数据
 						var goods = $('<div class="goods-item"></div>');
-						//console.log(goods[key]);
-						goods.load('goodsInfo.html',function(){
-							console.log(key);
+						
+						goods.load('goodsInfo.html?key='+Math.random(),function(){
+							//console.log(key);
 							goods.find('.cart-goods-item').attr('data-id',result[key]['goods-id']);
 							goods.find('.goods-name a').html(result[key]['goods-name']);
 							goods.find('.goods-price').html(result[key]['goods-price']);

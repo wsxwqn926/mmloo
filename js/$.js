@@ -438,6 +438,7 @@ function goods(show){
     })
     this.index = 1;
     this.timer = null;
+
 }
 goods.prototype = {
     //保留prototype中原有的属性
@@ -485,6 +486,7 @@ goods.prototype = {
     perClick:function(){
         var that = this;
         this.goodsPer.click(function(){
+        	console.log(2222)
             that.index--;
             that.switchLi();
         })
